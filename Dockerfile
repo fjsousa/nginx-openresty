@@ -14,11 +14,10 @@ ENV VAR_PREFIX /var/nginx
 
 RUN echo "==> Installing dependencies..." \
  && apk update \
- && apk add unzip wget curl gcc make \
  && apk add --virtual build-deps \
-    musl-dev \
-    pcre-dev openssl-dev zlib-dev ncurses-dev readline-dev \
-    perl \
+    unzip wget curl gcc make musl-dev \
+    pcre-dev openssl-dev zlib-dev \
+    ncurses-dev readline-dev perl \
  && mkdir -p /root/ngx_openresty \
  && cd /root/ngx_openresty \
  && echo "==> Downloading OpenResty..." \
@@ -75,9 +74,6 @@ RUN echo "==> Installing dependencies..." \
  && make install \
  && ln -s /opt/openresty/luajit/bin/luarocks /usr/local/bin/luarocks \
  && apk del build-deps \
- && echo "==> Installing Lua dependencies..." \
- && luarocks install busted \
- && luarocks install lua-resty-http \
  && rm -rf /root/luarocks
 
 WORKDIR $NGINX_PREFIX/
