@@ -1,6 +1,6 @@
 # based on https://github.com/ficusio/openresty/blob/master/alpine/Dockerfile
 
-FROM alpine:3.3
+FROM alpine:latest
 
 ENV OPENRESTY_VERSION 1.9.7.3
 ENV LUAROCKS_VERSION 2.3.0
@@ -17,7 +17,7 @@ RUN echo "==> Installing dependencies..." \
  && apk add --virtual build-deps \
     unzip wget curl gcc make musl-dev \
     pcre-dev openssl-dev zlib-dev \
-    ncurses-dev readline-dev perl \
+    ncurses-dev readline-dev perl bash\
  && mkdir -p /root/ngx_openresty \
  && cd /root/ngx_openresty \
  && echo "==> Downloading OpenResty..." \
@@ -73,7 +73,6 @@ RUN echo "==> Installing dependencies..." \
  && make build \
  && make install \
  && ln -s /opt/openresty/luajit/bin/luarocks /usr/local/bin/luarocks \
- && apk del build-deps \
  && rm -rf /root/luarocks
 
 WORKDIR $NGINX_PREFIX/
