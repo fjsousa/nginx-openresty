@@ -1,7 +1,7 @@
 # based on https://github.com/ficusio/openresty/blob/master/alpine/Dockerfile
 # but with luarocks and a bumped version of openresty
 
-FROM alpine:latest
+FROM alpine:3.6
 
 ENV OPENRESTY_VERSION 1.11.2.3
 ENV LUAROCKS_VERSION 2.4.2
