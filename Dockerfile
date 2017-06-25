@@ -1,9 +1,10 @@
 # based on https://github.com/ficusio/openresty/blob/master/alpine/Dockerfile
+# but with luarocks and a bumped version of openresty
 
 FROM alpine:latest
 
-ENV OPENRESTY_VERSION 1.9.7.3
-ENV LUAROCKS_VERSION 2.3.0
+ENV OPENRESTY_VERSION 1.11.2.3
+ENV LUAROCKS_VERSION 2.4.2
 ENV OPENRESTY_PREFIX /opt/openresty
 ENV NGINX_PREFIX /opt/openresty/nginx
 ENV LUAJIT_PREFIX /opt/openresty/luajit
@@ -67,7 +68,7 @@ RUN echo "==> Installing dependencies..." \
  && echo "==> Configuring LuaRocks..." \
  && ./configure --prefix=/opt/openresty/luajit \
     --with-lua=/opt/openresty/luajit \
-    --lua-suffix=jit-2.1.0-beta1 \
+    --lua-suffix=jit-2.1.0-beta2 \
     --with-lua-include=/opt/openresty/luajit/include/luajit-2.1 \
  && echo "==> Installing LuaRocks..." \
  && make build \
