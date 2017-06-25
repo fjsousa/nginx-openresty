@@ -71,7 +71,8 @@ RUN echo "==> Installing dependencies..." \
  && make build \
  && make install \
  && ln -s /opt/openresty/luajit/bin/luarocks /usr/local/bin/luarocks \
- && rm -rf /root/luarocks
+ && rm -rf /root/luarocks \
+ && apk del build-deps
 
 WORKDIR $NGINX_PREFIX/
 
