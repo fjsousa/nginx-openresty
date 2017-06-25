@@ -1,4 +1,4 @@
-Openresty Docker image based on Alpine Linux.
+Lightweight Openresty + Luarocks Docker Image based on Alpine Linux.
 
 [Docker Hub](https://hub.docker.com/r/fjsousa/nginx-openresty/tags/)
 
